@@ -17,6 +17,14 @@ export default function _layout() {
                     title: "Página Inicial"
                 }}
             />
+
+            <Drawer.Screen
+                name="residencial"
+                options={{
+                    drawerLabel: "Residenciais Faama",
+                    title: "Residenciais Faama"
+                }}
+            />
         </Drawer>
     </GestureHandlerRootView>
   )
