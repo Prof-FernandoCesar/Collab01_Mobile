@@ -27,17 +27,17 @@ export default function _layout() {
           options={{
             drawerLabel: "Calculadora de Média Semestral",
             drawerIcon: ({ color, size }) => (
-  <Ionicons name="calculator-outline" size={size} color={color} />
-),
-            title: "Calculadora de Média Semestral",
+              <Ionicons name="calculator-outline" size={size} color={color} />
+            ),
+            title: "Calculadora de Média",
             headerRight: () => (
               <Image
                 source={require("../assets/faama.png")}
                 style={{
-                  width: 70,
-                  height: 35,
+                  width: 60,
+                  height: 45,
                   resizeMode: "contain",
-                  marginRight: 50,
+                  marginRight: 30,
                 }}
               />
             ),
