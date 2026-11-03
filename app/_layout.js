@@ -24,6 +24,13 @@ export default function _layout() {
             title: "Fale Conosco",
           }}
         />
+        <Drawer.Screen
+          name="teologia"
+          options={{
+            drawerLabel: "Curso de Teologia",
+            title: "Teologia - FAAMA",
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );
