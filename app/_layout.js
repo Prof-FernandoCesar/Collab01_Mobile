@@ -18,6 +18,20 @@ export default function _layout() {
           }}
         />
         <Drawer.Screen
+          name="ouvidoria"
+          options={{
+            drawerLabel: "Ouvidoria",
+            title: "Fale Conosco",
+          }}
+        />
+        <Drawer.Screen
+          name="GuiaCalouro"
+          options={{
+            drawerLabel: "Guia do Calouro",
+            title: "Guia do Calouro",
+          }}
+        />
+        <Drawer.Screen
           name="contato"
           options={{
             drawerLabel: "Contato",
