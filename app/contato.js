@@ -14,7 +14,7 @@ const contato = {
   endereco: "Rod. Eng. Augusto Meira Filho, S/n - Km 01",
   cidade: "Paricatuba, Benevides - PA",
   cep: "68795-000",
-  telefone: "91991455360",
+  telefone: "5591991455360",
   email: "contato@faama.edu.br",
   instagram: "https://instagram.com/faama_edu",
 };

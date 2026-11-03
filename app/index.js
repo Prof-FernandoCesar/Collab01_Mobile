@@ -21,7 +21,6 @@ const COR_CARTAO = '#FFFFFF'
 const COR_TEXTO = '#1E293B'
 const COR_TEXTO_SECUNDARIO = '#475569'
 
-// Faixas empilhadas que simulam um gradiente escuro na base da foto
 const QUANTIDADE_FAIXAS = 20
 const OPACIDADE_MAXIMA = 0.8
 const OPACIDADES_GRADIENTE = []
@@ -38,7 +37,6 @@ const ACESSOS_RAPIDOS = [
   { emoji: '✉️', rotulo: 'Contato', url: 'mailto:contato@faama.edu.br' }
 ]
 
-// Agrupa os acessos em linhas de 2 para montar a grade 2×3
 const LINHAS_ACESSOS = []
 for (let i = 0; i < ACESSOS_RAPIDOS.length; i += 2) {
   LINHAS_ACESSOS.push(ACESSOS_RAPIDOS.slice(i, i + 2))
