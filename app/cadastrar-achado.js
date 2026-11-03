@@ -1,17 +1,5 @@
 import React, { useState, useRef } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Pressable,
-  StatusBar,
-  ScrollView,
-  KeyboardAvoidingView,
-  Keyboard,
-  Platform,
-  Modal,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput, Pressable, StatusBar, ScrollView, KeyboardAvoidingView, Keyboard, Platform, Modal, } from "react-native";
 import { router } from "expo-router";
 import { adicionarObjeto } from "./objetosStore";
 
