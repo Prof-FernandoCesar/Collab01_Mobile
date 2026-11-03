@@ -28,45 +28,6 @@ export default function TelaCardapio({ dia }) {
       contentContainerStyle={styles.conteudo}
       showsVerticalScrollIndicator={false}
     >
-      {/* Cabeçalho visual */}
-      <View style={styles.cabecalhoPrincipal}>
-        <View style={styles.linhaLogo}>
-          <View style={styles.logoContainer}>
-            <Image
-              source={require('../assets/images/logo-faama.png')}
-              style={styles.logo}
-              resizeMode="contain"
-            />
-          </View>
-
-          <View style={styles.identidade}>
-            <Text style={styles.nomeInstituicao}>FAAMA</Text>
-            <Text style={styles.textoInstituicao}>
-              Faculdade Adventista da Amazônia
-            </Text>
-          </View>
-        </View>
-
-        <View style={styles.linhaDecorativa}>
-          <View style={styles.linhaAzul} />
-          <View style={styles.linhaRoxa} />
-        </View>
-
-        <Text style={styles.tituloPrincipal}>
-          Sabor e bem-estar
-        </Text>
-
-        <Text style={styles.slogan}>
-          Alimentação que faz bem para você.
-        </Text>
-
-        <View style={styles.etiqueta}>
-          <Text style={styles.etiquetaTexto}>
-            CARDÁPIO DA SEMANA
-          </Text>
-        </View>
-      </View>
-
       <Text style={styles.subtitulo}>
         Confira as opções disponíveis em cada refeição.
       </Text>
@@ -108,7 +69,9 @@ export default function TelaCardapio({ dia }) {
                   )}
 
                   <View style={styles.textos}>
-                    <Text style={styles.nome}>{alimento.nome}</Text>
+                    <Text style={styles.nome}>
+                      {alimento.nome}
+                    </Text>
 
                     {alimento.descricao ? (
                       <Text style={styles.descricao}>
@@ -148,108 +111,6 @@ const styles = StyleSheet.create({
   conteudo: {
     padding: 16,
     paddingBottom: 30,
-  },
-
-  cabecalhoPrincipal: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    padding: 20,
-    marginBottom: 22,
-    borderWidth: 1,
-    borderColor: '#E4E7F5',
-    elevation: 4,
-    shadowColor: '#283593',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 10,
-  },
-
-  linhaLogo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
- logoContainer: {
-  width: 64,
-  height: 64,
-  borderRadius: 18,
-  backgroundColor: '#FFFFFF',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: 8,
-  overflow: 'hidden',
-},
-
-logo: {
-  width: '100%',
-  height: '100%',
-},
-
-  identidade: {
-    flex: 1,
-    marginLeft: 14,
-  },
-
-  nomeInstituicao: {
-    fontSize: 23,
-    fontWeight: '900',
-    color: '#2563EB',
-    letterSpacing: 1,
-  },
-
-  textoInstituicao: {
-    fontSize: 11,
-    color: '#64748B',
-    marginTop: 3,
-  },
-
-  linhaDecorativa: {
-    flexDirection: 'row',
-    height: 4,
-    marginTop: 20,
-    marginBottom: 20,
-    borderRadius: 4,
-    overflow: 'hidden',
-  },
-
-  linhaAzul: {
-    flex: 2,
-    backgroundColor: '#2563EB',
-  },
-
-  linhaRoxa: {
-    flex: 1,
-    backgroundColor: '#7C3AED',
-  },
-
-  tituloPrincipal: {
-    fontSize: 27,
-    fontWeight: '900',
-    color: '#172554',
-    letterSpacing: -0.6,
-  },
-
-  slogan: {
-    fontSize: 14,
-    color: '#64748B',
-    marginTop: 7,
-    lineHeight: 21,
-  },
-
-  etiqueta: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#EDE9FE',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 20,
-    marginTop: 18,
-  },
-
-  etiquetaTexto: {
-    color: '#6D28D9',
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 1,
   },
 
   subtitulo: {

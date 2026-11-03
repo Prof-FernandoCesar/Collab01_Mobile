@@ -8,7 +8,6 @@ export default function Layout() {
       <Drawer
         initialRouteName="index"
         screenOptions={{
-          // Cabeçalho superior
           headerStyle: {
             backgroundColor: '#2563EB',
           },
@@ -19,7 +18,6 @@ export default function Layout() {
           },
           headerShadowVisible: false,
 
-          // Menu lateral
           drawerStyle: {
             backgroundColor: '#FFFFFF',
             width: 285,
@@ -33,25 +31,44 @@ export default function Layout() {
             marginLeft: 0,
           },
 
-          // Fundo das páginas
           sceneStyle: {
             backgroundColor: '#F5F7FF',
           },
         }}
       >
+        {/* Tela inicial: não aparece no menu lateral */}
         <Drawer.Screen
           name="index"
           options={{
             title: 'Início',
-            drawerLabel: 'Início',
+            drawerItemStyle: { display: 'none' },
           }}
         />
 
+        {/* Cardápio */}
+        <Drawer.Screen
+          name="cardapio"
+          options={{
+            title: 'Cardápio',
+            drawerLabel: 'Cardápio',
+          }}
+        />
+
+        {/* Agendamento de visita */}
+        <Drawer.Screen
+          name="agendamento"
+          options={{
+            title: 'Agendar visita',
+            drawerLabel: 'Agendar visita',
+          }}
+        />
+
+        {/* Rotas antigas: mantidas, mas ocultas */}
         <Drawer.Screen
           name="segunda"
           options={{
             title: 'Segunda-feira',
-            drawerLabel: 'Segunda-feira',
+            drawerItemStyle: { display: 'none' },
           }}
         />
 
@@ -59,7 +76,7 @@ export default function Layout() {
           name="Novo"
           options={{
             title: 'Terça-feira',
-            drawerLabel: 'Terça-feira',
+            drawerItemStyle: { display: 'none' },
           }}
         />
 
@@ -67,7 +84,7 @@ export default function Layout() {
           name="quarta"
           options={{
             title: 'Quarta-feira',
-            drawerLabel: 'Quarta-feira',
+            drawerItemStyle: { display: 'none' },
           }}
         />
 
@@ -75,7 +92,7 @@ export default function Layout() {
           name="quinta"
           options={{
             title: 'Quinta-feira',
-            drawerLabel: 'Quinta-feira',
+            drawerItemStyle: { display: 'none' },
           }}
         />
 
@@ -83,7 +100,7 @@ export default function Layout() {
           name="sexta"
           options={{
             title: 'Sexta-feira',
-            drawerLabel: 'Sexta-feira',
+            drawerItemStyle: { display: 'none' },
           }}
         />
 
@@ -91,7 +108,7 @@ export default function Layout() {
           name="sabado"
           options={{
             title: 'Sábado',
-            drawerLabel: 'Sábado',
+            drawerItemStyle: { display: 'none' },
           }}
         />
 
@@ -99,7 +116,7 @@ export default function Layout() {
           name="domingo"
           options={{
             title: 'Domingo',
-            drawerLabel: 'Domingo',
+            drawerItemStyle: { display: 'none' },
           }}
         />
       </Drawer>
