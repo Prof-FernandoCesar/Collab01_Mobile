@@ -29,6 +29,13 @@ export default function _layout() {
                     title: "Fale Conosco"
                 }}
             />
+            <Drawer.Screen
+                name="GuiaCalouro"
+                options={{
+                    drawerLabel: "Guia do Calouro",
+                    title: "Guia do Calouro"
+                }}
+            />
         </Drawer>
     </GestureHandlerRootView>
   )
