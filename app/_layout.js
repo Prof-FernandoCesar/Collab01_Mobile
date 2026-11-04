@@ -155,6 +155,13 @@ export default function Layout() {
             drawerItemStyle: { display: 'none' },
           }}
         />
+        <Drawer.Screen
+          name="teologia"
+          options={{
+            drawerLabel: "Curso de Teologia",
+            title: "Teologia - FAAMA",
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );
