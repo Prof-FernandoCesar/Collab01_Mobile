@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Image, ImageBackground, Modal, Pressable, ScrollView, Text, TextInput, View } from "react-native"
+import { Image, ImageBackground, Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
 import { useRouter } from "expo-router"
 
 export default function CalculadoraMediaScreen() {
@@ -44,47 +44,47 @@ export default function CalculadoraMediaScreen() {
   return (
     <>
       <ImageBackground
-        className="flex-1"
+        style={estilos.fundo}
         imageStyle={{ opacity: 0.55, width: "110%", height: "110%", left: "-5%", top: "-5%" }}
         resizeMode="cover"
         source={require("../assets/background.png")}
       >
-        <ScrollView className="flex-1 bg-transparent">
-          <View className="flex-1 items-center px-5 py-8">
-            <View className="w-full max-w-2xl">
+        <ScrollView style={estilos.areaRolagem}>
+          <View style={estilos.containerPagina}>
+            <View style={estilos.conteudoPagina}>
               <Pressable
                 accessibilityRole="button"
                 accessibilityLabel="Voltar para o início"
                 onPress={() => router.replace("/")}
-                className="mb-8 self-center"
+                style={estilos.containerLogo}
               >
                 <Image
                   accessibilityLabel="Logo da FAAMA"
-                  className="h-12 w-72"
+                  style={estilos.imagemLogo}
                   resizeMode="contain"
                   source={require("../assets/image.png")}
                 />
               </Pressable>
 
-              <View className="mb-6">
-                <Text className="mb-2 text-center font-semibold uppercase tracking-widest text-sky-700">
+              <View style={estilos.blocoTitulo}>
+                <Text style={estilos.textoDestaque}>
                   Vida acadêmica
                 </Text>
-                <Text className="text-center text-3xl font-bold text-blue-950">
+                <Text style={estilos.textoTitulo}>
                   Calculadora de Média Semestral
                 </Text>
-                <Text className="mt-3 text-center text-base leading-6 text-slate-600">
+                <Text style={estilos.textoDescricao}>
                   Informe suas duas notas e veja sua média do semestre.
                 </Text>
               </View>
 
-              <View className="rounded-xl border border-sky-100 bg-white p-6 shadow-sm">
-                <Text className="mb-5 text-lg font-semibold text-blue-950">Suas notas</Text>
+              <View style={estilos.cartaoNotas}>
+                <Text style={estilos.tituloCartao}>Suas notas</Text>
 
-                <Text className="mb-2 font-medium text-slate-700">Primeira nota</Text>
+                <Text style={estilos.rotuloCampo}>Primeira nota</Text>
                 <TextInput
                   accessibilityLabel="Primeira nota"
-                  className="mb-5 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900"
+                  style={estilos.primeiroCampoNota}
                   keyboardType="decimal-pad"
                   onChangeText={setFirstGrade}
                   placeholder="Ex.: 8,5"
@@ -92,10 +92,10 @@ export default function CalculadoraMediaScreen() {
                   value={firstGrade}
                 />
 
-                <Text className="mb-2 font-medium text-slate-700">Segunda nota</Text>
+                <Text style={estilos.rotuloCampo}>Segunda nota</Text>
                 <TextInput
                   accessibilityLabel="Segunda nota"
-                  className="mb-2 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900"
+                  style={estilos.campoNota}
                   keyboardType="decimal-pad"
                   onChangeText={setSecondGrade}
                   placeholder="Ex.: 7,0"
@@ -104,25 +104,25 @@ export default function CalculadoraMediaScreen() {
                 />
 
                 {errorMessage !== "" && (
-                  <Text accessibilityRole="alert" className="mt-2 text-sm text-red-600">
+                  <Text accessibilityRole="alert" style={estilos.mensagemErro}>
                     {errorMessage}
                   </Text>
                 )}
 
                 <Pressable
                   accessibilityRole="button"
-                  className="mt-5 items-center rounded-md bg-blue-950 px-4 py-4"
+                  style={estilos.botaoCalcular}
                   onPress={calculateAverage}
                 >
-                  <Text className="font-semibold text-white">Calcular média</Text>
+                  <Text style={estilos.textoBotaoCalcular}>Calcular média</Text>
                 </Pressable>
 
                 <Pressable
                   accessibilityRole="button"
-                  className="mt-3 items-center rounded-md border border-sky-200 px-4 py-3"
+                  style={estilos.botaoLimpar}
                   onPress={clearFields}
                 >
-                  <Text className="font-semibold text-blue-800">Limpar campos</Text>
+                  <Text style={estilos.textoBotaoLimpar}>Limpar campos</Text>
                 </Pressable>
               </View>
             </View>
@@ -136,33 +136,33 @@ export default function CalculadoraMediaScreen() {
         transparent
         visible={average !== null}
       >
-        <View className="flex-1 items-center justify-center px-6">
+        <View style={estilos.containerModal}>
           <Pressable
             accessibilityLabel="Fechar resultado"
             accessibilityRole="button"
-            className="absolute inset-0 bg-slate-950/50"
+            style={estilos.fundoModal}
             onPress={() => setAverage(null)}
           />
 
-          <View className="z-10 w-full max-w-sm items-center rounded-xl border border-sky-100 bg-white p-7">
-            <Text className="text-base font-medium text-slate-600">Sua média</Text>
-            <Text className="mt-2 text-5xl font-bold text-blue-950">
+          <View style={estilos.cartaoModal}>
+            <Text style={estilos.rotuloModal}>Sua média</Text>
+            <Text style={estilos.textoMedia}>
               {average?.toFixed(1).replace(".", ",")}
             </Text>
-            <Text className={`mt-3 text-xl font-semibold ${passed ? "text-emerald-700" : "text-amber-700"}`}>
+            <Text style={[estilos.textoResultado, passed ? estilos.aprovado : estilos.recuperacao]}>
               {passed ? "Aprovado" : "Recuperação"}
             </Text>
-            <Text className="mt-2 text-center text-sm leading-5 text-slate-600">
+            <Text style={estilos.descricaoResultado}>
               {passed
                 ? "Sua média é igual ou superior a 7,0."
                 : "Sua média ficou abaixo de 7,0."}
             </Text>
             <Pressable
               accessibilityRole="button"
-              className="mt-6 rounded-md bg-blue-950 px-6 py-3"
+              style={estilos.botaoFechar}
               onPress={() => setAverage(null)}
             >
-              <Text className="font-semibold text-white">Fechar</Text>
+              <Text style={estilos.textoBotaoFechar}>Fechar</Text>
             </Pressable>
           </View>
         </View>
@@ -170,3 +170,204 @@ export default function CalculadoraMediaScreen() {
     </>
   )
 }
+
+const estilos = StyleSheet.create({
+  fundo: {
+    flex: 1,
+  },
+  areaRolagem: {
+    flex: 1,
+    backgroundColor: "transparent",
+  },
+  containerPagina: {
+    flex: 1,
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 32,
+  },
+  conteudoPagina: {
+    width: "100%",
+    maxWidth: 672,
+  },
+  containerLogo: {
+    alignSelf: "center",
+    marginBottom: 32,
+  },
+  imagemLogo: {
+    width: 500,
+    height: 160,
+    resizeMode: "contain",
+  },
+  blocoTitulo: {
+    marginBottom: 24,
+  },
+  textoDestaque: {
+    marginBottom: 8,
+    color: "#0369a1",
+    textAlign: "center",
+    fontWeight: "600",
+    textTransform: "uppercase",
+    letterSpacing: 1.4,
+  },
+  textoTitulo: {
+    color: "#172554",
+    textAlign: "center",
+    fontSize: 30,
+    lineHeight: 36,
+    fontWeight: "700",
+  },
+  textoDescricao: {
+    marginTop: 12,
+    color: "#475569",
+    textAlign: "center",
+    fontSize: 16,
+    lineHeight: 24,
+  },
+  cartaoNotas: {
+    padding: 24,
+    borderWidth: 1,
+    borderColor: "#e0f2fe",
+    borderRadius: 12,
+    backgroundColor: "#ffffff",
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  tituloCartao: {
+    marginBottom: 20,
+    color: "#172554",
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: "600",
+  },
+  rotuloCampo: {
+    marginBottom: 8,
+    color: "#334155",
+    fontWeight: "500",
+  },
+  primeiroCampoNota: {
+    marginBottom: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: "#e2e8f0",
+    borderRadius: 6,
+    backgroundColor: "#f8fafc",
+    color: "#0f172a",
+    fontSize: 16,
+    lineHeight: 24,
+  },
+  campoNota: {
+    marginBottom: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: "#e2e8f0",
+    borderRadius: 6,
+    backgroundColor: "#f8fafc",
+    color: "#0f172a",
+    fontSize: 16,
+    lineHeight: 24,
+  },
+  mensagemErro: {
+    marginTop: 8,
+    color: "#dc2626",
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  botaoCalcular: {
+    marginTop: 20,
+    alignItems: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    borderRadius: 6,
+    backgroundColor: "#172554",
+  },
+  textoBotaoCalcular: {
+    color: "#ffffff",
+    fontWeight: "600",
+  },
+  botaoLimpar: {
+    marginTop: 12,
+    alignItems: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: "#bae6fd",
+    borderRadius: 6,
+  },
+  textoBotaoLimpar: {
+    color: "#1e40af",
+    fontWeight: "600",
+  },
+  containerModal: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 24,
+  },
+  fundoModal: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    backgroundColor: "rgba(2, 6, 23, 0.5)",
+  },
+  cartaoModal: {
+    zIndex: 10,
+    width: "100%",
+    maxWidth: 384,
+    alignItems: "center",
+    padding: 28,
+    borderWidth: 1,
+    borderColor: "#e0f2fe",
+    borderRadius: 12,
+    backgroundColor: "#ffffff",
+  },
+  rotuloModal: {
+    color: "#475569",
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: "500",
+  },
+  textoMedia: {
+    marginTop: 8,
+    color: "#172554",
+    fontSize: 48,
+    lineHeight: 48,
+    fontWeight: "700",
+  },
+  textoResultado: {
+    marginTop: 12,
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: "600",
+  },
+  aprovado: {
+    color: "#047857",
+  },
+  recuperacao: {
+    color: "#b45309",
+  },
+  descricaoResultado: {
+    marginTop: 8,
+    color: "#475569",
+    textAlign: "center",
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  botaoFechar: {
+    marginTop: 24,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 6,
+    backgroundColor: "#172554",
+  },
+  textoBotaoFechar: {
+    color: "#ffffff",
+    fontWeight: "600",
+  },
+})

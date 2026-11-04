@@ -1,4 +1,3 @@
-import "../global.css"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { Drawer } from "expo-router/drawer"
 import { Image } from "react-native"
