@@ -20,42 +20,26 @@ export default function Layout() {
           drawerInactiveTintColor: cores.textoSuave,
           drawerLabelStyle: { fontFamily: fonteMono, fontSize: 13, letterSpacing: 0.5 },
         }}
-<<<<<<< Updated upstream
-        >
-            <Drawer.Screen
-                name="index"
-                options={{
-                    drawerLabel: "Início",
-                    title: "Página Inicial"
-                    
-
-                }}
-              
-              
-                
-            />
-            <Drawer.Screen
-                name="ouvidoria"
-                options={{
-                    drawerLabel: "Ouvidoria",
-                    title: "Fale Conosco"
-                }}
-            />
-            <Drawer.Screen
-                name="GuiaCalouro"
-                options={{
-                    drawerLabel: "Guia do Calouro",
-                    title: "Guia do Calouro"
-                }}
-            />
-        </Drawer>
-=======
       >
         <Drawer.Screen
           name="index"
           options={{
             drawerLabel: 'Início',
             title: 'FAAMA',
+          }}
+        />
+        <Drawer.Screen
+          name="ouvidoria"
+          options={{
+            drawerLabel: 'Ouvidoria',
+            title: 'Fale Conosco',
+          }}
+        />
+        <Drawer.Screen
+          name="GuiaCalouro"
+          options={{
+            drawerLabel: 'Guia do Calouro',
+            title: 'Guia do Calouro',
           }}
         />
         <Drawer.Screen
@@ -66,7 +50,6 @@ export default function Layout() {
           }}
         />
       </Drawer>
->>>>>>> Stashed changes
     </GestureHandlerRootView>
   );
 }
