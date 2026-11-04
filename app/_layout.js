@@ -91,6 +91,13 @@ export default function Layout() {
             title: 'Curso de Pedagogia',
           }}
         />
+        <Drawer.Screen
+          name="pastoral"
+          options={{
+            drawerLabel: 'Pastoral',
+            title: 'Vida Espiritual',
+          }}
+        />
 
         {/* Rotas antigas: mantidas, mas ocultas */}
         <Drawer.Screen
