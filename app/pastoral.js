@@ -37,13 +37,7 @@ const atividades = [
   },
 ];
 
-function Secao({
-  titulo,
-  subtitulo,
-}: {
-  titulo: string;
-  subtitulo?: string;
-}) {
+function Secao({ titulo, subtitulo }) {
   return (
     <View style={styles.cabecalhoSecao}>
       <Text style={styles.tituloSecao}>{titulo}</Text>
