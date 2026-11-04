@@ -4,7 +4,7 @@
     "slug": "projForm",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./imagens/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true
@@ -12,16 +12,21 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+        "foregroundImage": "./imagens/android-icon-foreground.png",
+        "backgroundImage": "./imagens/android-icon-background.png",
+        "monochromeImage": "./imagens/android-icon-monochrome.png"
+      },
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./imagens/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-image",
+      "expo-font",
+      "expo-asset",
+      "@react-native-community/datetimepicker"
     ]
   }
 }
