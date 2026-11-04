@@ -45,7 +45,7 @@ export default function CalculadoraMediaScreen() {
     <>
       <ImageBackground
         style={estilos.fundo}
-        imageStyle={{ opacity: 0.55, width: "110%", height: "110%", left: "-5%", top: "-5%" }}
+        imageStyle={{ opacity: 1, width: "110%", height: "110%", left: "-5%", top: "-5%" }}
         resizeMode="cover"
         source={require("../assets/background.png")}
       >
