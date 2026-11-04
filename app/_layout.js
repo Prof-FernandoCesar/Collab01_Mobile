@@ -1,7 +1,7 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
 
-export default function _layout() {
+export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
@@ -24,6 +24,14 @@ export default function _layout() {
             drawerLabel: "Cadastrar achado",
             title: "Cadastrar achado",
             drawerItemStyle: { display: "none" },
+          }}
+        />
+
+        <Drawer.Screen
+          name="secretaria-tesouraria"
+          options={{
+            drawerLabel: "Secretaria e Tesouraria",
+            title: "Secretaria Acadêmica e Tesouraria",
           }}
         />
       </Drawer>
