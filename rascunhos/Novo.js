@@ -1,10 +1,7 @@
-import { View, Text } from 'react-native'
-import React from 'react'
 
-export default props => {
-    console.warn(props);
-    return (
-      <Text>Novo</Text>
-  
-  )
+import React from 'react';
+import TelaCardapio from '../components/TelaCardapio';
+
+export default function Novo() {
+  return <TelaCardapio dia="terca" />;
 }

@@ -1,10 +1,18 @@
-
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { StatusBar } from 'expo-status-bar';
 import { Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { cores } from '../constantes/tema';
+import {cores, fonteMono} from '../constantes/tema'
+
+const drawerIcon = (name) => ({color, size}) => (
+    <Ionicons name={name} color={color} size={size} />
+)
+
+
+
+
+
 
 export default function Layout() {
   return (
@@ -36,39 +44,146 @@ export default function Layout() {
           },
         }}
       >
-      <Drawer.Screen
-        name="index"
-        options={{
-          drawerLabel: 'Início',
-          title: 'FAAMA',
-        }}
-      />
 
-      <Drawer.Screen
-        name="ouvidoria"
-        options={{
-          drawerLabel: 'Ouvidoria',
-          title: 'Fale Conosco',
-        }}
-      />
+        {/* Tela inicial: não aparece no menu lateral */}
+        <Drawer.Screen
+          name="index"
+          options={{
+            title: 'Início',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
 
-      <Drawer.Screen
-        name="GuiaCalouro"
-        options={{
-          drawerLabel: 'Guia do Calouro',
-          title: 'Guia do Calouro',
-        }}
-      />
+        {/* Cardápio */}
+        <Drawer.Screen
+          name="cardapio"
+          options={{
+            title: 'Cardápio',
+            drawerLabel: 'Cardápio',
+          }}
+        />
 
-      <Drawer.Screen
-        name="pedagogia"
-        options={{
-          drawerLabel: 'Pedagogia',
-          title: 'Curso de Pedagogia',
-        }}
-      />
+        {/* Agendamento de visita */}
+        <Drawer.Screen
+          name="agendamento"
+          options={{
+            title: 'Agendar visita',
+            drawerLabel: 'Agendar visita',
+          }}
+        />
 
-      <Drawer.Screen
+        <Drawer.Screen
+          name="ads"
+          options={{
+            drawerLabel: "Curso de ADS",
+            title: "Curso de ADS | FAAMA",
+            headerShown: false,
+            drawerIcon: drawerIcon("school-outline")
+          }}
+        />
+        <Drawer.Screen
+          name="ouvidoria"
+          options={{
+            drawerLabel: 'Ouvidoria',
+            title: 'Fale Conosco',
+          }}
+        />
+        <Drawer.Screen
+          name="GuiaCalouro"
+          options={{
+            drawerLabel: 'Guia do Calouro',
+            title: 'Guia do Calouro',
+          }}
+        />
+        <Drawer.Screen
+          name="contato"
+          options={{
+            drawerLabel: 'Contato',
+            title: 'Fale Conosco',
+          }}
+        />
+        <Drawer.Screen
+          name="pedagogia"
+          options={{
+            drawerLabel: 'Pedagogia',
+            title: 'Curso de Pedagogia',
+          }}
+        />
+        <Drawer.Screen
+          name="pastoral"
+          options={{
+            drawerLabel: 'Pastoral',
+            title: 'Vida Espiritual',
+          }}
+        />
+
+        {/* Rotas antigas: mantidas, mas ocultas */}
+        <Drawer.Screen
+          name="segunda"
+          options={{
+            title: 'Segunda-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="Novo"
+          options={{
+            title: 'Terça-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="quarta"
+          options={{
+            title: 'Quarta-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="quinta"
+          options={{
+            title: 'Quinta-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="sexta"
+          options={{
+            title: 'Sexta-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="sabado"
+          options={{
+            title: 'Sábado',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="domingo"
+          options={{
+            title: 'Domingo',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+        <Drawer.Screen
+          name="teologia"
+          options={{
+            drawerLabel: "Curso de Teologia",
+            title: "Teologia - FAAMA",
+          }}
+        />
+        
+
+
+        <Drawer.Screen
         name="calcularmedia"
         options={{
           drawerLabel: 'Calculadora de Média',
@@ -91,5 +206,8 @@ export default function Layout() {
       />
     </Drawer>
     </GestureHandlerRootView >
+      </Drawer>
+    </GestureHandlerRootView>
   );
 }
+

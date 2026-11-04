@@ -15,7 +15,8 @@
         "foregroundImage": "./imagens/android-icon-foreground.png",
         "backgroundImage": "./imagens/android-icon-background.png",
         "monochromeImage": "./imagens/android-icon-monochrome.png"
-      }
+      },
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
       "bundler": "metro",
