@@ -43,6 +43,13 @@ export default function Layout() {
           }}
         />
         <Drawer.Screen
+          name="contato"
+          options={{
+            drawerLabel: 'Contato',
+            title: 'Fale Conosco',
+          }}
+        />
+        <Drawer.Screen
           name="pedagogia"
           options={{
             drawerLabel: 'Pedagogia',
