@@ -27,15 +27,33 @@ export default function Layout() {
           drawerLabelStyle: { fontFamily: fonteMono, fontSize: 13, letterSpacing: 0.5 },
         }}
       >
+        {/* Tela inicial: não aparece no menu lateral */}
         <Drawer.Screen
           name="index"
           options={{
-            drawerLabel: "Início",
-            title: "Página Inicial | FAAMA",
-            headerShown: false,
-            drawerIcon: drawerIcon("home-outline")
+            title: 'Início',
+            drawerItemStyle: { display: 'none' },
           }}
         />
+
+        {/* Cardápio */}
+        <Drawer.Screen
+          name="cardapio"
+          options={{
+            title: 'Cardápio',
+            drawerLabel: 'Cardápio',
+          }}
+        />
+
+        {/* Agendamento de visita */}
+        <Drawer.Screen
+          name="agendamento"
+          options={{
+            title: 'Agendar visita',
+            drawerLabel: 'Agendar visita',
+          }}
+        />
+
         <Drawer.Screen
           name="ads"
           options={{
@@ -71,6 +89,63 @@ export default function Layout() {
           options={{
             drawerLabel: 'Pedagogia',
             title: 'Curso de Pedagogia',
+          }}
+        />
+
+        {/* Rotas antigas: mantidas, mas ocultas */}
+        <Drawer.Screen
+          name="segunda"
+          options={{
+            title: 'Segunda-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="Novo"
+          options={{
+            title: 'Terça-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="quarta"
+          options={{
+            title: 'Quarta-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="quinta"
+          options={{
+            title: 'Quinta-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="sexta"
+          options={{
+            title: 'Sexta-feira',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="sabado"
+          options={{
+            title: 'Sábado',
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
+        <Drawer.Screen
+          name="domingo"
+          options={{
+            title: 'Domingo',
+            drawerItemStyle: { display: 'none' },
           }}
         />
       </Drawer>

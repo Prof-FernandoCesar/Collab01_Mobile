@@ -2,7 +2,6 @@
   "expo": {
     "name": "projForm",
     "slug": "projForm",
-    "scheme": "projform",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./imagens/icon.png",
@@ -16,7 +15,8 @@
         "foregroundImage": "./imagens/android-icon-foreground.png",
         "backgroundImage": "./imagens/android-icon-background.png",
         "monochromeImage": "./imagens/android-icon-monochrome.png"
-      }
+      },
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
       "favicon": "./imagens/favicon.png"
@@ -24,7 +24,9 @@
     "plugins": [
       "expo-router",
       "expo-image",
-      "expo-font"
+      "expo-font",
+      "expo-asset",
+      "@react-native-community/datetimepicker"
     ]
   }
 }
