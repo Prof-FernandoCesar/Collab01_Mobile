@@ -205,9 +205,7 @@ export default function Layout() {
         }}
       />
     </Drawer>
-    </GestureHandlerRootView >
-      </Drawer>
-    </GestureHandlerRootView>
+  </GestureHandlerRootView>
   );
 }
 
