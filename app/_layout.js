@@ -1,13 +1,18 @@
-import 'react-native-gesture-handler'
-import {GestureHandlerRootView} from "react-native-gesture-handler"
-import {Drawer} from 'expo-router/drawer'
-import {StatusBar} from 'expo-status-bar'
-import {Ionicons} from '@expo/vector-icons'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
+import { StatusBar } from 'expo-status-bar';
+import { Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import {cores, fonteMono} from '../constantes/tema'
 
 const drawerIcon = (name) => ({color, size}) => (
     <Ionicons name={name} color={color} size={size} />
 )
+
+
+
+
+
 
 export default function Layout() {
   return (
@@ -15,18 +20,31 @@ export default function Layout() {
       <StatusBar style="light" />
       <Drawer
         screenOptions={{
-          headerStyle: { backgroundColor: cores.fundo, borderBottomWidth: 1, borderBottomColor: cores.borda },
+          headerStyle: {
+            backgroundColor: cores.fundo,
+            borderBottomWidth: 1,
+            borderBottomColor: cores.borda,
+          },
           headerShadowVisible: false,
           headerTintColor: cores.textoForte,
           headerTitleStyle: { fontWeight: '700', fontSize: 16 },
           sceneStyle: { backgroundColor: cores.fundo },
-          drawerStyle: { backgroundColor: cores.superficie, borderRightColor: cores.borda },
+          drawerStyle: {
+            backgroundColor: cores.superficie,
+            borderRightColor: cores.borda,
+          },
           drawerActiveBackgroundColor: 'rgba(59, 130, 246, 0.15)',
           drawerActiveTintColor: cores.destaque,
           drawerInactiveTintColor: cores.textoSuave,
-          drawerLabelStyle: { fontFamily: fonteMono, fontSize: 13, letterSpacing: 0.5 },
+          drawerLabelStyle: {
+            fontFamily: 'System',
+            fontSize: 14,
+            fontWeight: '500',
+            letterSpacing: 0,
+          },
         }}
       >
+
         {/* Tela inicial: não aparece no menu lateral */}
         <Drawer.Screen
           name="index"
@@ -162,7 +180,32 @@ export default function Layout() {
             title: "Teologia - FAAMA",
           }}
         />
-      </Drawer>
-    </GestureHandlerRootView>
+        
+
+
+        <Drawer.Screen
+        name="calcularmedia"
+        options={{
+          drawerLabel: 'Calculadora de Média',
+          title: 'Calculadora de Média',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="calculator-outline" size={size} color={color} />
+          ),
+          headerRight: () => (
+            <Image
+              source={require('../assets/faama.png')}
+              style={{
+                width: 60,
+                height: 45,
+                resizeMode: 'contain',
+                marginRight: 30,
+              }}
+            />
+          ),
+        }}
+      />
+    </Drawer>
+  </GestureHandlerRootView>
   );
 }
+

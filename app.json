@@ -4,7 +4,7 @@
     "slug": "projForm",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./imagens/icon.png",
+    "icon": "./imagens/icon-quadrado.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true
@@ -19,6 +19,7 @@
       "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./imagens/favicon.png"
     },
     "plugins": [
