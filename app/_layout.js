@@ -181,7 +181,13 @@ export default function Layout() {
           }}
         />
         
-
+       <Drawer.Screen
+          name="programasExtensao"
+          options={{
+            drawerLabel: "Pós-graduação e Cursos de Extensão",
+            title: "Pós-graduação e Cursos de Extensão"
+           }}
+        />
 
         <Drawer.Screen
         name="calcularmedia"
