@@ -22,6 +22,15 @@ export default function _layout() {
               
                 
             />
+
+            <Drawer.Screen
+                name="calendarioAcademico"
+                options={{
+                    drawerLabel: "Calendário Acadêmico",
+                    title: "Calendário Acadêmico"
+                }}
+            />
+            
             <Drawer.Screen
                 name="ouvidoria"
                 options={{
