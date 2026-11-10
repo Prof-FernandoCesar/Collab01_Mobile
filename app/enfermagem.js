@@ -1,4 +1,13 @@
-import { Image, ScrollView, Text, View, Pressable, Linking } from 'react-native'
+import {
+  Image,
+  ScrollView,
+  Text,
+  View,
+  Pressable,
+  Linking,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native'
 import { useRouter } from 'expo-router'
 
 const courseDetails = [
@@ -63,18 +72,16 @@ const faculty = [
 
 function Section({ title, children }) {
   return (
-    <View className="mb-6 w-full">
-      <Text className="mb-3 text-xl font-bold text-blue-950">
-        {title}
-      </Text>
+    <View style={styles.section}>
+      <Text style={styles.sectionTitle}>{title}</Text>
       {children}
     </View>
   )
 }
 
-function Card({ children, className = '' }) {
+function Card({ children, style }) {
   return (
-    <View className={`rounded-xl border border-sky-100 bg-white p-5 shadow-sm ${className}`}>
+    <View style={[styles.card, style]}>
       {children}
     </View>
   )
@@ -82,23 +89,17 @@ function Card({ children, className = '' }) {
 
 function Paragraph({ children }) {
   return (
-    <Text className="mb-3 text-base leading-7 text-slate-700">
-      {children}
-    </Text>
+    <Text style={styles.paragraph}>{children}</Text>
   )
 }
 
 function BulletList({ items }) {
   return (
-    <View className="rounded-xl border border-sky-100 bg-white p-5 shadow-sm">
+    <View style={styles.bulletList}>
       {items.map((item) => (
-        <View className="mb-3 flex-row" key={item}>
-          <Text className="mr-3 text-base font-bold text-sky-700">
-            •
-          </Text>
-          <Text className="flex-1 text-base leading-7 text-slate-700">
-            {item}
-          </Text>
+        <View style={styles.bulletRow} key={item}>
+          <Text style={styles.bullet}>•</Text>
+          <Text style={styles.bulletText}>{item}</Text>
         </View>
       ))}
     </View>
@@ -125,51 +126,53 @@ const professorImages = {
 
 export default function Enfermagem() {
   const router = useRouter()
+  const { width } = useWindowDimensions()
+  const gridCardStyle = width >= 640 ? styles.gridCardWide : styles.gridCard
 
   return (
-    <View className="flex-1 bg-slate-50">
+    <View style={styles.screen}>
       <Image
         source={require('../assets/background.png')}
         resizeMode="cover"
-        className="absolute -left-[5%] -top-[5%] h-[110%] w-[110%] opacity-55"
+        style={styles.backgroundImage}
         accessibilityElementsHidden
         importantForAccessibility="no"
       />
 
       <ScrollView
-        className="flex-1"
-        contentContainerClassName="w-full items-center px-5 py-8"
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator
       >
-        <View className="w-full max-w-4xl self-center">
+        <View style={styles.content}>
 
-          <View className="mb-6 items-center rounded-2xl bg-blue-50 px-6 py-8">
+          <View style={styles.hero}>
             <Image
               source={require('../assets/image.png')}
               resizeMode="contain"
-              className="mb-5 h-16 w-48"
+              style={styles.logo}
               accessibilityLabel="Logo da FAAMA"
             />
-            <Text className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+            <Text style={styles.eyebrow}>
               Graduação FAAMA
             </Text>
-            <Text className="mt-2 text-center text-5xl font-bold text-blue-950">
+            <Text style={styles.heroTitle}>
               Enfermagem
             </Text>
           </View>
 
           <Section title="Informações gerais">
-            <View className="flex-row flex-wrap">
+            <View style={styles.rowWrap}>
               {courseDetails.map(([label, value]) => (
                 <Card
-                  className="mb-3 w-full sm:w-[48%] sm:mr-[2%]"
+                  style={gridCardStyle}
                   key={label}
                 >
-                  <Text className="text-sm font-medium text-slate-500">
+                  <Text style={styles.label}>
                     {label}
                   </Text>
                   {value ? (
-                    <Text className="mt-1 text-base font-semibold text-blue-950">
+                    <Text style={styles.value}>
                       {value}
                     </Text>
                   ) : null}
@@ -180,11 +183,11 @@ export default function Enfermagem() {
 
           <Section title="Perfil do egresso">
             <Card>
-              <Text className="text-xl font-bold text-blue-950">
+              <Text style={styles.cardTitle}>
                 Formação Inovadora em Enfermagem na FAAMA
               </Text>
 
-              <Text className="mb-3 mt-2 text-lg font-semibold text-sky-800">
+              <Text style={styles.subtitle}>
                 Desenvolvendo Profissionais Comprometidos com a Saúde e a Sociedade
               </Text>
 
@@ -196,21 +199,21 @@ export default function Enfermagem() {
                 crítica, reflexiva e transformadora.
               </Paragraph>
 
-              <View className="mt-3">
-                <Text className="mb-3 text-lg font-semibold text-blue-950">
+              <View style={styles.nestedSection}>
+                <Text style={styles.nestedSectionTitle}>
                   Os quatro pilares da formação
                 </Text>
 
-                <View className="flex-row flex-wrap">
+                <View style={styles.rowWrap}>
                   {pillars.map((pillar) => (
                     <Card
-                      className="mb-3 w-full sm:w-[48%] sm:mr-[2%]"
+                      style={gridCardStyle}
                       key={pillar.title}
                     >
-                      <Text className="mb-2 text-lg font-semibold text-sky-800">
+                      <Text style={styles.pillarTitle}>
                         {pillar.title}
                       </Text>
-                      <Text className="text-base leading-7 text-slate-700">
+                      <Text style={styles.bulletText}>
                         {pillar.text}
                       </Text>
                     </Card>
@@ -241,21 +244,21 @@ export default function Enfermagem() {
           </Section>
 
           <Section title="Corpo Docente">
-            <View className="flex-row flex-wrap">
+            <View style={styles.rowWrap}>
               {faculty.map(([name, degree]) => (
                 <Card
-                  className="mb-3 w-full sm:w-[48%] sm:mr-[2%]"
+                  style={gridCardStyle}
                   key={name}
                 >
                   <Image
                     source={professorImages[name]}
-                    style={{ width: 128, height: 128, borderRadius: 12, alignSelf: 'center', marginBottom: 8 }}
+                    style={styles.professorImage}
                     resizeMode="cover"
                   />
-                  <Text className="text-base font-semibold text-blue-950">
+                  <Text style={styles.professorName}>
                     {name}
                   </Text>
-                  <Text className="mt-1 text-sm text-slate-600">
+                  <Text style={styles.professorDegree}>
                     {degree}
                   </Text>
                 </Card>
@@ -298,13 +301,13 @@ export default function Enfermagem() {
                 um ensino alinhado às novas tecnologias e às exigências da prática clínica.
               </Paragraph>
 
-              <View className="mt-2 flex-row flex-wrap">
+              <View style={styles.tags}>
                 {['Laboratórios', 'Agendamento', 'Biblioteca'].map((item) => (
                   <View
-                    className="mb-2 mr-2 rounded-full border border-sky-200 bg-sky-50 px-4 py-2"
+                    style={styles.tag}
                     key={item}
                   >
-                    <Text className="text-sm font-semibold text-sky-800">
+                    <Text style={styles.tagText}>
                       {item}
                     </Text>
                   </View>
@@ -313,21 +316,21 @@ export default function Enfermagem() {
             </Card>
           </Section>
 
-          <View className="mb-6 w-full items-center">
+          <View style={styles.actions}>
             <Pressable
-              className="mb-3 w-full max-w-xs items-center rounded-xl bg-blue-950 px-5 py-4"
+              style={styles.primaryButton}
               onPress={() => router.push('/laboratorios')}
             >
-              <Text className="text-center text-base font-bold text-white">
+              <Text style={styles.primaryButtonText}>
                 Ver Laboratórios
               </Text>
             </Pressable>
 
             <Pressable
-              className="w-full max-w-xs items-center rounded-xl bg-blue-950 px-5 py-4"
+              style={styles.secondaryPrimaryButton}
               onPress={() => Linking.openURL('https://biblioteca.faama.edu.br/terminalweb')}
             >
-              <Text className="text-center text-base font-bold text-white">
+              <Text style={styles.primaryButtonText}>
                 Conheça nossa biblioteca
               </Text>
             </Pressable>
@@ -363,3 +366,247 @@ export default function Enfermagem() {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: '#f8fafc',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    left: '-5%',
+    top: '-5%',
+    width: '110%',
+    height: '110%',
+    opacity: 0.55,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    width: '100%',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 32,
+  },
+  content: {
+    width: '100%',
+    maxWidth: 896,
+    alignSelf: 'center',
+  },
+  hero: {
+    marginBottom: 24,
+    alignItems: 'center',
+    borderRadius: 16,
+    backgroundColor: '#eff6ff',
+    paddingHorizontal: 24,
+    paddingVertical: 32,
+  },
+  logo: {
+    width: 192,
+    height: 64,
+    marginBottom: 20,
+  },
+  eyebrow: {
+    color: '#2563eb',
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '600',
+    textTransform: 'uppercase',
+    letterSpacing: 1.4,
+  },
+  heroTitle: {
+    marginTop: 8,
+    color: '#172554',
+    fontSize: 48,
+    lineHeight: 48,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  section: {
+    width: '100%',
+    marginBottom: 24,
+  },
+  sectionTitle: {
+    marginBottom: 12,
+    color: '#172554',
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: '700',
+  },
+  card: {
+    borderWidth: 1,
+    borderColor: '#e0f2fe',
+    borderRadius: 12,
+    backgroundColor: '#ffffff',
+    padding: 20,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  gridCard: {
+    width: '100%',
+    marginBottom: 12,
+  },
+  gridCardWide: {
+    width: '48%',
+    marginRight: '2%',
+    marginBottom: 12,
+  },
+  rowWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  label: {
+    color: '#64748b',
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '500',
+  },
+  value: {
+    marginTop: 4,
+    color: '#172554',
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '600',
+  },
+  cardTitle: {
+    color: '#172554',
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: '700',
+  },
+  subtitle: {
+    marginTop: 8,
+    marginBottom: 12,
+    color: '#075985',
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '600',
+  },
+  paragraph: {
+    marginBottom: 12,
+    color: '#334155',
+    fontSize: 16,
+    lineHeight: 28,
+  },
+  nestedSection: {
+    marginTop: 12,
+  },
+  nestedSectionTitle: {
+    marginBottom: 12,
+    color: '#172554',
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '600',
+  },
+  pillarTitle: {
+    marginBottom: 8,
+    color: '#075985',
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '600',
+  },
+  bulletList: {
+    borderWidth: 1,
+    borderColor: '#e0f2fe',
+    borderRadius: 12,
+    backgroundColor: '#ffffff',
+    padding: 20,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  bulletRow: {
+    flexDirection: 'row',
+    marginBottom: 12,
+  },
+  bullet: {
+    marginRight: 12,
+    color: '#0369a1',
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '700',
+  },
+  bulletText: {
+    flex: 1,
+    color: '#334155',
+    fontSize: 16,
+    lineHeight: 28,
+  },
+  professorImage: {
+    width: 128,
+    height: 128,
+    borderRadius: 12,
+    alignSelf: 'center',
+    marginBottom: 8,
+  },
+  professorName: {
+    color: '#172554',
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '600',
+  },
+  professorDegree: {
+    marginTop: 4,
+    color: '#475569',
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  tags: {
+    marginTop: 8,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  tag: {
+    marginRight: 8,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: '#bae6fd',
+    borderRadius: 9999,
+    backgroundColor: '#f0f9ff',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  tagText: {
+    color: '#075985',
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '600',
+  },
+  actions: {
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  primaryButton: {
+    width: '100%',
+    maxWidth: 320,
+    alignItems: 'center',
+    marginBottom: 12,
+    borderRadius: 12,
+    backgroundColor: '#172554',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+  },
+  secondaryPrimaryButton: {
+    width: '100%',
+    maxWidth: 320,
+    alignItems: 'center',
+    borderRadius: 12,
+    backgroundColor: '#172554',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+  },
+  primaryButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+})

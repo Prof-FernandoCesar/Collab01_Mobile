@@ -1,16 +1,20 @@
 
-import { Image, ScrollView, Text, View, Pressable, Linking } from 'react-native'
+import {
+  Image,
+  ScrollView,
+  Text,
+  View,
+  Pressable,
+  Linking,
+  StyleSheet,
+} from 'react-native'
 import { useRouter } from 'expo-router'
 
 // Componentes auxiliares
 function Section({ title, children, large = false }) {
   return (
-    <View className="mb-6 w-full">
-      <Text
-        className={`mb-3 font-bold text-blue-950 text-center ${
-          large ? 'text-4xl' : 'text-xl'
-        }`}
-      >
+    <View style={styles.section}>
+      <Text style={[styles.sectionTitle, large && styles.largeSectionTitle]}>
         {title}
       </Text>
       {children}
@@ -18,9 +22,9 @@ function Section({ title, children, large = false }) {
   )
 }
 
-function Card({ children, className = '' }) {
+function Card({ children, style }) {
   return (
-    <View className={`rounded-xl border border-sky-100 bg-white p-5 shadow-sm ${className}`}>
+    <View style={[styles.card, style]}>
       {children}
     </View>
   )
@@ -28,9 +32,7 @@ function Card({ children, className = '' }) {
 
 function Paragraph({ children }) {
   return (
-    <Text className="mb-3 text-base leading-7 text-slate-700">
-      {children}
-    </Text>
+    <Text style={styles.paragraph}>{children}</Text>
   )
 }
 
@@ -65,22 +67,22 @@ export default function Laboratorios() {
   const router = useRouter()
 
   return (
-    <View className="flex-1 bg-slate-50">
+    <View style={styles.screen}>
       <ScrollView
-        className="flex-1"
-        contentContainerClassName="w-full items-center px-5 py-8"
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator
       >
         <Section title="Nossos Laboratórios" large>
           {labs.map((lab) => (
-            <Card className="mb-6 w-full" key={lab.title}>
+            <Card style={styles.labCard} key={lab.title}>
               <Image
                 source={{ uri: lab.image }}
-                className="h-48 w-full rounded-t-lg"
+                style={styles.labImage}
                 resizeMode="cover"
               />
 
-              <Text className="mt-3 text-xl font-bold text-blue-950">
+              <Text style={styles.labTitle}>
                 {lab.title}
               </Text>
 
@@ -95,28 +97,28 @@ export default function Laboratorios() {
             Habilidades em Enfermagem.
           </Paragraph>
 
-          <View className="items-center">
+          <View style={styles.buttonContainer}>
             <Pressable
-              className="mt-2 w-full max-w-xs items-center rounded-xl bg-blue-950 px-5 py-3"
+              style={styles.scheduleButton}
               onPress={() =>
                 Linking.openURL(
                   'https://bookings.cloud.microsoft/book/Laboratriodehabilidadesemenfermagem@educadventista.onmicrosoft.com/?ismsaljsauthenabled=true'
                 )
               }
             >
-              <Text className="text-center text-base font-bold text-white">
+              <Text style={styles.scheduleButtonText}>
                 Agendar horário
               </Text>
             </Pressable>
           </View>
         </Section>
 
-        <View className="mb-6 w-full items-center">
+        <View style={styles.backButtonContainer}>
           <Pressable
-            className="w-full max-w-xs items-center rounded-xl border border-blue-950 bg-white px-5 py-4"
+            style={styles.backButton}
             onPress={() => router.push('/enfermagem')}
           >
-            <Text className="text-center text-base font-bold text-blue-950">
+            <Text style={styles.backButtonText}>
               ← Voltar para Enfermagem
             </Text>
           </Pressable>
@@ -125,3 +127,113 @@ export default function Laboratorios() {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: '#f8fafc',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    width: '100%',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 32,
+  },
+  section: {
+    width: '100%',
+    marginBottom: 24,
+  },
+  sectionTitle: {
+    marginBottom: 12,
+    color: '#172554',
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  largeSectionTitle: {
+    fontSize: 36,
+    lineHeight: 40,
+  },
+  card: {
+    borderWidth: 1,
+    borderColor: '#e0f2fe',
+    borderRadius: 12,
+    backgroundColor: '#ffffff',
+    padding: 20,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  labCard: {
+    width: '100%',
+    marginBottom: 24,
+  },
+  labImage: {
+    width: '100%',
+    height: 192,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  labTitle: {
+    marginTop: 12,
+    color: '#172554',
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: '700',
+  },
+  paragraph: {
+    marginBottom: 12,
+    color: '#334155',
+    fontSize: 16,
+    lineHeight: 28,
+  },
+  buttonContainer: {
+    alignItems: 'center',
+  },
+  scheduleButton: {
+    width: '100%',
+    maxWidth: 320,
+    alignItems: 'center',
+    marginTop: 8,
+    borderRadius: 12,
+    backgroundColor: '#172554',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+  },
+  scheduleButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  backButtonContainer: {
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  backButton: {
+    width: '100%',
+    maxWidth: 320,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#172554',
+    borderRadius: 12,
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+  },
+  backButtonText: {
+    color: '#172554',
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+})
