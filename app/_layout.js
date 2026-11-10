@@ -188,6 +188,13 @@ export default function Layout() {
             title: "Pós-graduação e Cursos de Extensão"
            }}
         />
+        <Drawer.Screen
+            name="calendarioAcademico"
+            options={{
+                drawerLabel: "Calendário Acadêmico",
+                title: "Calendário Acadêmico"
+            }}
+        />
 
         <Drawer.Screen
         name="calcularmedia"
