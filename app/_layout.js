@@ -189,6 +189,36 @@ export default function Layout() {
            }}
         />
         <Drawer.Screen
+            name="enfermagem"
+            options={{
+                drawerLabel: "Enfermagem",
+                title: "Curso de Enfermagem | FAAMA",
+                headerTitle: () => (
+                    <Image
+                        source={require('../assets/faama.png')}
+                        style={{ width: 112, height: 34 }}
+                        resizeMode="contain"
+                        accessibilityLabel="FAAMA"
+                    />
+                ),
+            }}
+        />
+        <Drawer.Screen
+            name="laboratorios"
+            options={{
+                drawerItemStyle: { display: 'none' },
+                title: "Laboratórios | FAAMA",
+                headerTitle: () => (
+                    <Image
+                        source={require('../assets/faama.png')}
+                        style={{ width: 112, height: 34 }}
+                        resizeMode="contain"
+                        accessibilityLabel="FAAMA"
+                    />
+                ),
+            }}
+        />
+        <Drawer.Screen
             name="calendarioAcademico"
             options={{
                 drawerLabel: "Calendário Acadêmico",
