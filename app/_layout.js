@@ -189,14 +189,6 @@ export default function Layout() {
            }}
         />
         <Drawer.Screen
-            name="calendarioAcademico"
-            options={{
-                drawerLabel: "Calendário Acadêmico",
-                title: "Calendário Acadêmico"
-            }}
-        />
-
-        <Drawer.Screen
         name="calcularmedia"
         options={{
           drawerLabel: 'Calculadora de Média',
