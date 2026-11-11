@@ -10,6 +10,8 @@ import {
     FlatList,
 } from 'react-native';
 
+import { EVENTOS } from '../dados/calendarioAcademico';
+
 function CartaoEvento({ dia, mes, titulo, categoria, descricao }) {
   return (
     <View style={styles.cartaoEvento}>
@@ -44,11 +46,11 @@ export default function CalendarioAcademico() {
         'Novembro',
         'Dezembro',
     ];
-    const [eventos, setEventos] = useState([]);
+    const [eventos, setEventos] = useState(EVENTOS);
     const numeroMesSelecionado = meses.indexOf(mesSelecionado) + 1;
     const eventosDoMes = eventos
   .filter((evento) => evento.mes === numeroMesSelecionado)
-  .sort((a, b) => a.data.localeCompare(b.data));
+  .sort((a, b) => parseInt(a.dia, 10) - parseInt(b.dia, 10));
 
 
     return (
@@ -139,7 +141,7 @@ export default function CalendarioAcademico() {
     renderItem={({ item }) => (
       <CartaoEvento
         dia={item.dia}
-        mes={item.mes}
+        mes={meses[item.mes - 1].slice(0, 3)}
         titulo={item.titulo}
         categoria={item.categoria}
         descricao={item.descricao}
